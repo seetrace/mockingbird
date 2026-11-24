@@ -50,7 +50,7 @@ Firmware (Supported)
 
 Custom Firmware (Supported)
 
-input disk a (Unsupported)
+input disk a (Supported)
 
 Kernel Support (Unsupported) (Linux kernel support)
 
