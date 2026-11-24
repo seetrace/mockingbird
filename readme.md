@@ -2,11 +2,23 @@
 
 by Yuta Seiya
 
-Mockingbird is a indie project where a fully custom hypervisor built from the ground up based on the orginal IBM PC era
-
 ## Usage
 
-./emulate <firmware>
+```sh
+./bin/emulate <firmware.bin> [disk.img]
+```
+
+The disk image is opened read/write. It may be empty and can grow sparsely as
+the guest writes to new sectors.
+
+The firmware includes real-mode reset-vector setup and BIOS interrupt services:
+
+- INT 10h: text output and cursor/mode queries
+- INT 13h: fixed-disk reset, read, write, and geometry
+- INT 16h: keyboard input and status
+- INT 18h/19h: diskless boot and reset/boot services
+
+Mockingbird is a indie project where a fully custom hypervisor built from the ground up based on the orginal IBM PC era
 
 ## Build
 
@@ -30,7 +42,9 @@ Note you can bring your own firmware but i *cannot* verify your firmware is comp
 
 ## featues & deveolopment
 
-Teletype (Partial support, Output only)
+Teletype Output (Supported)
+
+Teletype Input (Supported)
 
 Firmware (Supported)
 
@@ -38,7 +52,10 @@ Custom Firmware (Supported)
 
 input disk a (Unsupported)
 
+Kernel Support (Unsupported) (Linux kernel support)
+
 input disk b (Unsupported)
+
 
 
 custom memory allocation (Unsupported & not planned)

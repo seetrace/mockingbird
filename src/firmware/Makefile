@@ -22,6 +22,7 @@ $(ELF): $(OBJECTS) firmware.ld
 $(TARGET): $(ELF)
 	mkdir -p $(@D)
 	$(OBJCOPY) -O binary --gap-fill 0xFF $< $@
+	truncate -s 65536 $@
 
 clean:
 	rm -f $(OBJECTS) $(ELF) $(TARGET)

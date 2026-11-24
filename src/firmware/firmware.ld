@@ -4,16 +4,16 @@ ENTRY(_start)
 
 SECTIONS
 {
-    /* Firmware starts at physical 0xF0000 */
-    . = 0xF0000;
+    /* Flat firmware offsets are mapped by KVM at physical 0xF0000. */
+    . = 0;
 
     .text :
     {
         KEEP(*(.text))
     }
 
-    /* Reset vector at physical 0xFFFF0 */
-    . = 0xFFFF0;
+    /* Reset vector is offset 0xFFF0 in the flat 64 KiB image. */
+    . = 0xFFF0;
 
     .reset :
     {

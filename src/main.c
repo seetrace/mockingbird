@@ -6,8 +6,8 @@
 #define GUEST_RAM_SIZE (64 * 1024 * 1024)
 
 int main(int argc, char **argv) {
-    if (argc != 2) {
-        printf("Usage: %s <firmware.bin>\n", argv[0]);
+    if (argc < 2 || argc > 3) {
+        printf("Usage: %s <firmware.bin> [disk.img]\n", argv[0]);
         return 1;
     }
 
@@ -30,7 +30,9 @@ int main(int argc, char **argv) {
 
     printf("[HOST] Initializing KVM...\n");
 
-    if (kvm_backend_init(&kvm, &guest.memory) != 0) {
+    const char *disk_path = argc == 3 ? argv[2] : NULL;
+
+    if (kvm_backend_init(&kvm, &guest.memory, disk_path) != 0) {
         guest_destroy(&guest);
         return 1;
     }

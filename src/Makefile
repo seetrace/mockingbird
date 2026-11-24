@@ -12,7 +12,8 @@ SRCS = \
 	guest/memory.c \
 	cpu/vcpu.c \
 	kvm/kvm.c \
-	devices/serial.c
+	devices/serial.c \
+	devices/disk.c
 
 OBJS = $(patsubst %.c,$(BIN_DIR)/%.o,$(SRCS))
 
